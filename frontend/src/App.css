@@ -2497,7 +2497,7 @@ button.meeting-cancel {
 }
 
 .create-preview {
-  width: 50%;
+  width: 60%;
   background-color: #fff;
   border-radius: 10px;
   height: 61%;
@@ -2569,5 +2569,6 @@ button.meeting-cancel {
 }
 
 .meetingsettingondetail:hover {
-  color: blue;
+  color: #2f55d4;
+  cursor: pointer;
 }

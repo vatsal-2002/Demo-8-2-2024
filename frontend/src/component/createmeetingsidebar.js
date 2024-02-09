@@ -9,13 +9,15 @@ const Createmeetingsidebar = ({
   handleDurationChange,
   location,
   setLocation,
+  setSelectedDuration
 }) => {
   const [error, setError] = useState(null);
+  const [customDuration, setCustomDuration] = useState("");
   const navigate = useNavigate();
 
   const handleLocationChange = (event) => {
     const newLocation = event.target.value;
-    setLocation(newLocation); // Update the location state
+    setLocation(newLocation);
   };
 
   const handleContinue = async () => {
@@ -43,8 +45,8 @@ const Createmeetingsidebar = ({
         userId: decodedToken.id,
         scheduleId: null,
         name: meetingName,
-        duration: selectedDuration,
-        location: location, // Use location state
+        duration: showCustomDuration ? customDuration : selectedDuration,
+        location: location,
         link: null
       };
 
@@ -63,7 +65,7 @@ const Createmeetingsidebar = ({
 
       const responseData = await response.json();
 
-      navigate(`/meetingsetting?id=${responseData.id}&name=${responseData.name}&duration=${responseData.duration}&location=${responseData.location}`);
+      navigate(`/meetingsetting?id=${responseData.id}`);
     } catch (error) {
       console.error('Error creating meeting setting:', error.message);
       setError(error.message);
@@ -74,16 +76,26 @@ const Createmeetingsidebar = ({
     navigate('/index');
   };
 
+  const handleCustomDurationChange = (event) => {
+    const duration = event.target.value;
+    if (duration && !Number(duration)) {
+      setError("Please enter a valid number for duration.");
+    } else if (Number(duration) > 300) {
+      setError("Maximum time limit is 300 minutes.");
+    } else {
+      setError(null);
+      setCustomDuration(duration);
+      setSelectedDuration(duration);
+    }
+  };
+
+
   return (
     <>
       {error && <div>Error: {error}</div>}
       <div className="sidebar-block">
         <nav id="sidebar" className="sidebar-wrapper toggled">
-          <div
-            className="sidebar-content"
-            data-simplebar=""
-            style={{ height: "calc(100% - 60px)" }}
-          >
+          <div className="sidebar-content" data-simplebar="" style={{ height: "calc(100% - 60px)" }}>
             <div className="create-meeting mt-3 p-3">
               <button className="meeting-cancel" onClick={handleCancel}>
                 <span className="mdi mdi-arrow-left-thick"></span>Cancel
@@ -105,7 +117,7 @@ const Createmeetingsidebar = ({
               <select
                 id="duration"
                 className="custom-select"
-                value={selectedDuration}
+                value={showCustomDuration ? "Custom" : selectedDuration}
                 onChange={handleDurationChange}
               >
                 <option value="15">15 min</option>
@@ -122,7 +134,10 @@ const Createmeetingsidebar = ({
                     type="textbox"
                     className="form-control mb-3"
                     placeholder="Enter duration in minutes"
+                    value={customDuration}
+                    onChange={handleCustomDurationChange}
                   />
+                  {error && <div className="text-danger">{error}</div>}
                 </div>
               )}
 
@@ -150,3 +165,4 @@ const Createmeetingsidebar = ({
 };
 
 export default Createmeetingsidebar;
+

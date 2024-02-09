@@ -1,24 +1,3 @@
-// // meetingActions.js
-
-// // Action types
-// export const SET_MEETINGS = 'SET_MEETINGS';
-// export const SET_CURRENT_MEETING = 'SET_CURRENT_MEETING';
-
-// // Action creators
-// export const setMeetings = (meetings) => ({
-//     type: SET_MEETINGS,
-//     payload: meetings,
-// });
-
-
-// export const setCurrentMeeting = (meeting) => ({
-//     type: SET_CURRENT_MEETING,
-//     payload: meeting,
-// });
-
-// meetingActions.js
-
-// Action types
 export const SET_MEETINGS = 'SET_MEETINGS';
 export const SET_CURRENT_MEETING = 'SET_CURRENT_MEETING';
 export const SET_MEETING_DETAILS = 'SET_MEETING_DETAILS'; // Define new action type

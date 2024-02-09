@@ -83,7 +83,7 @@ const getScheduleById = (req, res) => {
         targetTimezone
       };
     }
-    
+
     const scheduleId = req.params.id;
     const timezone = req.query.timezone;
 
@@ -137,7 +137,7 @@ const getAllSchedules = (req, res) => {
 const userSchedules = (req, res) => {
   const userId = req.params.id;
   try {
-    const selectQuery = `SELECT userId, id, isDefault, timezone, weeklyhours FROM schedules where userId = ? `;
+    const selectQuery = `SELECT userId, id , name, isDefault, timezone, weeklyhours FROM schedules where userId = ? AND deletedAt IS NULL`;
 
     db.query(selectQuery, [userId], (error, results) => {
       if (error) {

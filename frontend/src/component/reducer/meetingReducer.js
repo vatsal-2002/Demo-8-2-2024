@@ -1,5 +1,3 @@
-// meetingReducer.js
-
 import { SET_MEETINGS, SET_CURRENT_MEETING } from '../actions/meetingActions'; // Import action types
 import { REMOVE_MEETING } from '../actions/meetingActions';
 

@@ -6,7 +6,7 @@ const Createmeeting = () => {
   const [selectedDuration, setSelectedDuration] = useState("15");
   const [showCustomDuration, setShowCustomDuration] = useState(false);
   const [location, setLocation] = useState("google_meet");
-  // const [isToggled, setToggled] = useState(true);
+  const [customDuration, setCustomDuration] = useState(""); // State to store custom duration
 
   const handleDurationChange = (event) => {
     const duration = event.target.value;
@@ -24,12 +24,11 @@ const Createmeeting = () => {
                 meetingName={meetingName}
                 setMeetingName={setMeetingName}
                 selectedDuration={selectedDuration}
-                setSelectedDuration={setSelectedDuration}
                 showCustomDuration={showCustomDuration}
-                setShowCustomDuration={setShowCustomDuration}
                 handleDurationChange={handleDurationChange}
                 location={location}
                 setLocation={setLocation}
+                setSelectedDuration={setSelectedDuration} // Add this line
               />
             </div>
           </div>

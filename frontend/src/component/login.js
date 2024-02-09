@@ -102,6 +102,9 @@ export default function Login() {
       const data = await response.json();
 
       if (response.status === 200) {
+        // Remove the signup token from sessionStorage if it exists
+        sessionStorage.removeItem("SignUpToken");
+
         // Store the JWT token in sessionStorage
         sessionStorage.setItem("userToken", data.token);
 
@@ -115,6 +118,7 @@ export default function Login() {
       console.error("Error during login:", error);
     }
   };
+
 
   return (
     <div className="Login">

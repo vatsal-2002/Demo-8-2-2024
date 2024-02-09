@@ -1,18 +1,3 @@
-// // store.js
-// import { createStore, combineReducers } from 'redux';
-// import meetingReducer from './reducer/meetingReducer';
-
-// // Combine reducers
-// const rootReducer = combineReducers({
-//     meetings: meetingReducer,
-// });
-
-// // Create store
-// const store = createStore(rootReducer);
-
-// export default store;
-
-// store.js
 import { createStore, combineReducers } from 'redux';
 import meetingReducer from './reducer/meetingReducer';
 

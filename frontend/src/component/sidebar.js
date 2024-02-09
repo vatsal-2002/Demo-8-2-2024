@@ -1,7 +1,7 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+
 const Sidebar = ({ isToggled, handleToggle }) => {
-
-
   return (
     <>
       <nav id="sidebar" className={`sidebar-wrapper ${isToggled ? '' : 'toggled'}`}>
@@ -27,22 +27,22 @@ const Sidebar = ({ isToggled, handleToggle }) => {
               </Link>
             </div>
             <li className="sidebar">
-              <a href="">
+              <Link to="/index">
                 <i className="mdi mdi-link-variant" />
-                Event types
-              </a>
+                Event
+              </Link>
             </li>
-            <li className="sidebar">
-              <a href="">
+            {/* <li className="sidebar">
+              <Link to="/scheduledevents">
                 <i className="mdi mdi-calendar-range" />
                 Scheduled events
-              </a>
-            </li>
+              </Link>
+            </li> */}
             <li className="sidebar">
-              <a href="">
+              <Link to="/availabilityschedules">
                 <i className="mdi mdi-clock-time-five-outline" />
                 Availability
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -51,4 +51,4 @@ const Sidebar = ({ isToggled, handleToggle }) => {
   )
 }
 
-export default Sidebar
+export default Sidebar;
